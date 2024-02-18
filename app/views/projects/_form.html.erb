@@ -1,27 +1,25 @@
-<%= form_with(model: project) do |form| %>
-  <% if project.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
+<%= form_for(@project) do |form| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
       <ul>
-        <% project.errors.each do |error| %>
+        <% @project.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
+  <div class="field">
+    <%= form.label :title%> <br>
     <%= form.text_field :title %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :desc, style: "display: block" %>
     <%= form.text_area :desc %>
   </div>
 
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
